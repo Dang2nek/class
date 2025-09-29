@@ -1,17 +1,21 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 👉 URI MongoDB Atlas của bạn
+// 👉 URI MongoDB Atlas
 const uri = "mongodb+srv://class:class@class.i7mhwiv.mongodb.net/?retryWrites=true&w=majority&appName=class";
 const client = new MongoClient(uri);
-const dbName = "umlEditor"; // bạn đặt tên database tùy ý
+const dbName = "umlEditor";
 
-// API lưu sơ đồ UML
+// 📌 Serve file tĩnh (HTML, JS, CSS) trong thư mục "public"
+app.use(express.static(path.join(__dirname, "public")));
+
+// API lưu UML
 app.put("/api/diagram/:id", async (req, res) => {
   const id = req.params.id;
   const { uml } = req.body;
@@ -29,7 +33,7 @@ app.put("/api/diagram/:id", async (req, res) => {
   }
 });
 
-// API lấy sơ đồ UML
+// API lấy UML
 app.get("/api/diagram/:id", async (req, res) => {
   const id = req.params.id;
   try {
