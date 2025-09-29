@@ -2,60 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UML Editor</title>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <title>Sơ đồ lớp học</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    textarea { width: 100%; height: 200px; }
-    button { margin: 5px; padding: 10px 20px; }
-    #diagram { border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .classroom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .group { border: 2px solid #444; padding: 10px; border-radius: 10px; }
+    .group h3 { text-align: center; margin: 5px 0; }
+    .tables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .table { border: 1px solid #888; border-radius: 5px; padding: 5px; text-align: center; }
+    .student-inputs { display: flex; flex-direction: column; gap: 5px; }
+    .table input { width: 90%; padding: 5px; text-align: center; }
+    .controls { margin-top: 20px; text-align: center; }
+    button { padding: 10px 15px; margin: 5px; }
   </style>
 </head>
 <body>
-  <h1>UML Editor</h1>
+  <h1>Sơ đồ lớp học</h1>
   
-  <textarea id="umlInput">classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-</textarea>
-  <br />
-  <button onclick="saveUML()">💾 Save</button>
-  <button onclick="loadUML()">📂 Load</button>
-  <button onclick="renderUML()">▶ Render</button>
+  <div class="classroom">
+    <!-- 4 tổ -->
+    <div class="group" id="group1">
+      <h3>Tổ 1</h3>
+      <div class="tables">
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
+      </div>
+    </div>
+    <div class="group" id="group2">
+      <h3>Tổ 2</h3>
+      <div class="tables">
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
+      </div>
+    </div>
+    <div class="group" id="group3">
+      <h3>Tổ 3</h3>
+      <div class="tables">
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
+      </div>
+    </div>
+    <div class="group" id="group4">
+      <h3>Tổ 4</h3>
+      <div class="tables">
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
+        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
+      </div>
+    </div>
+  </div>
 
-  <div id="diagram"></div>
+  <div class="controls">
+    <button onclick="saveClassroom()">💾 Save All</button>
+    <button onclick="loadClassroom()">📂 Load</button>
+  </div>
 
   <script>
     const API_BASE = window.location.origin + "/api/diagram";
-    const DIAGRAM_ID = "uml1"; // có thể đổi
+    const DIAGRAM_ID = "classroom";
 
-    async function saveUML() {
-      const uml = document.getElementById("umlInput").value;
+    function getData() {
+      const groups = {};
+      document.querySelectorAll(".group").forEach((group, gIndex) => {
+        const tables = group.querySelectorAll(".table");
+        groups[`group${gIndex+1}`] = Array.from(tables).map(table => {
+          const inputs = table.querySelectorAll("input");
+          return Array.from(inputs).map(inp => inp.value);
+        });
+      });
+      return groups;
+    }
+
+    function setData(data) {
+      Object.keys(data).forEach((g, gIndex) => {
+        const group = document.getElementById(`group${gIndex+1}`);
+        if (group) {
+          const tables = group.querySelectorAll(".table");
+          data[g].forEach((students, tIndex) => {
+            const inputs = tables[tIndex].querySelectorAll("input");
+            students.forEach((val, i) => {
+              if (inputs[i]) inputs[i].value = val;
+            });
+          });
+        }
+      });
+    }
+
+    async function saveClassroom() {
+      const classroom = getData();
       await fetch(`${API_BASE}/${DIAGRAM_ID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ uml })
+        body: JSON.stringify({ uml: classroom })
       });
-      alert("✅ Saved to MongoDB!");
+      alert("✅ Saved!");
     }
 
-    async function loadUML() {
+    async function loadClassroom() {
       const res = await fetch(`${API_BASE}/${DIAGRAM_ID}`);
       const data = await res.json();
       if (data && data.uml) {
-        document.getElementById("umlInput").value = data.uml;
-        renderUML();
+        setData(data.uml);
       } else {
-        alert("⚠ Chưa có dữ liệu trong DB!");
+        alert("⚠ No data found!");
       }
-    }
-
-    function renderUML() {
-      const uml = document.getElementById("umlInput").value;
-      const diagramDiv = document.getElementById("diagram");
-      diagramDiv.innerHTML = `<div class="mermaid">${uml}</div>`;
-      mermaid.init(undefined, diagramDiv);
     }
   </script>
 </body>
