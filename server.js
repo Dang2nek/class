@@ -7,13 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 👉 URI MongoDB Atlas
+// 👉 MongoDB Atlas URI
 const uri = "mongodb+srv://class:class@class.i7mhwiv.mongodb.net/?retryWrites=true&w=majority&appName=class";
 const client = new MongoClient(uri);
 const dbName = "umlEditor";
 
-// 📌 Serve file tĩnh (HTML, JS, CSS) trong thư mục "public"
-app.use(express.static(path.join(__dirname, "public")));
+// Serve file index.html khi vào "/"
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // API lưu UML
 app.put("/api/diagram/:id", async (req, res) => {
