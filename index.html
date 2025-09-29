@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UML Editor</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    textarea { width: 100%; height: 200px; margin-bottom: 10px; }
+    #diagram { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+    button { margin-right: 5px; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h2>UML Diagram Editor</h2>
+
+  <textarea id="umlCode"></textarea><br>
+
+  <button onclick="renderDiagram()">Render</button>
+  <button onclick="saveDiagram()">Save to DB</button>
+
+  <div id="diagram" class="mermaid"></div>
+
+  <script>
+    mermaid.initialize({ startOnLoad: false });
+    const diagramId = "uml1"; // id sơ đồ (bạn có thể đổi)
+
+    // Hàm render
+    function renderDiagram() {
+      const code = document.getElementById("umlCode").value;
+      document.getElementById("diagram").innerHTML = code;
+      mermaid.init(undefined, "#diagram");
+    }
+
+    // Hàm save vào MongoDB
+    async function saveDiagram() {
+      const code = document.getElementById("umlCode").value;
+      await fetch(`http://localhost:3000/api/diagram/${diagramId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ uml: code })
+      });
+      alert("✅ Saved to MongoDB!");
+    }
+
+    // Hàm load từ MongoDB khi mở web
+    async function loadDiagram() {
+      const res = await fetch(`http://localhost:3000/api/diagram/${diagramId}`);
+      const data = await res.json();
+      if (data && data.uml) {
+        document.getElementById("umlCode").value = data.uml;
+        renderDiagram();
+      } else {
+        // Nếu chưa có trong DB thì tạo sẵn UML mặc định
+        const defaultUML = `classDiagram
+class User {
+  +String username
+  +String email
+  +String password
+}
+class Post {
+  +String title
+  +String content
+}
+User "1" --> "*" Post : owns`;
+        document.getElementById("umlCode").value = defaultUML;
+        renderDiagram();
+      }
+    }
+
+    // Load khi mở web
+    loadDiagram();
+  </script>
+</body>
+</html>
