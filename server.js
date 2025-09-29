@@ -6,10 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const uri = "mongodb://localhost:27017";
+// 👉 URI MongoDB Atlas của bạn
+const uri = "mongodb+srv://class:class@class.i7mhwiv.mongodb.net/?retryWrites=true&w=majority&appName=class";
 const client = new MongoClient(uri);
-const dbName = "umlEditor";
+const dbName = "umlEditor"; // bạn đặt tên database tùy ý
 
+// API lưu sơ đồ UML
 app.put("/api/diagram/:id", async (req, res) => {
   const id = req.params.id;
   const { uml } = req.body;
@@ -27,6 +29,7 @@ app.put("/api/diagram/:id", async (req, res) => {
   }
 });
 
+// API lấy sơ đồ UML
 app.get("/api/diagram/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -39,4 +42,4 @@ app.get("/api/diagram/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(3000, () => console.log("✅ Server chạy tại http://localhost:3000"));
