@@ -1,127 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Sơ đồ lớp học</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .classroom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .group { border: 2px solid #444; padding: 10px; border-radius: 10px; }
-    .group h3 { text-align: center; margin: 5px 0; }
-    .tables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .table { border: 1px solid #888; border-radius: 5px; padding: 5px; text-align: center; }
-    .student-inputs { display: flex; flex-direction: column; gap: 5px; }
-    .table input { width: 90%; padding: 5px; text-align: center; }
-    .controls { margin-top: 20px; text-align: center; }
-    button { padding: 10px 15px; margin: 5px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 { margin-bottom: 20px; color: #333; }
+    .classroom {
+      display: grid;
+      grid-template-rows: repeat(4, auto);
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .group {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      justify-items: center;
+    }
+    .table {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px;
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .table h3 { margin: 0; font-size: 14px; color: #444; }
+    .seat { display: flex; gap: 6px; }
+    .seat input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+    }
+    .btns {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      color: white;
+    }
+    .save-btn { background: #4caf50; }
+    .save-btn:hover { background: #43a047; }
+    .load-btn { background: #2196f3; }
+    .load-btn:hover { background: #1976d2; }
   </style>
 </head>
 <body>
   <h1>Sơ đồ lớp học</h1>
-  
-  <div class="classroom">
-    <!-- 4 tổ -->
-    <div class="group" id="group1">
-      <h3>Tổ 1</h3>
-      <div class="tables">
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
-      </div>
-    </div>
-    <div class="group" id="group2">
-      <h3>Tổ 2</h3>
-      <div class="tables">
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
-      </div>
-    </div>
-    <div class="group" id="group3">
-      <h3>Tổ 3</h3>
-      <div class="tables">
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
-      </div>
-    </div>
-    <div class="group" id="group4">
-      <h3>Tổ 4</h3>
-      <div class="tables">
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 1 - HS1"><input placeholder="Bàn 1 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 2 - HS1"><input placeholder="Bàn 2 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 3 - HS1"><input placeholder="Bàn 3 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 4 - HS1"><input placeholder="Bàn 4 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 5 - HS1"><input placeholder="Bàn 5 - HS2"></div></div>
-        <div class="table"><div class="student-inputs"><input placeholder="Bàn 6 - HS1"><input placeholder="Bàn 6 - HS2"></div></div>
-      </div>
-    </div>
-  </div>
+  <div class="classroom" id="classroom"></div>
 
-  <div class="controls">
-    <button onclick="saveClassroom()">💾 Save All</button>
-    <button onclick="loadClassroom()">📂 Load</button>
+  <div class="btns">
+    <button class="save-btn" onclick="saveAll()">💾 Lưu tất cả</button>
+    <button class="load-btn" onclick="loadData()">🔄 Tải lại</button>
   </div>
 
   <script>
-    const API_BASE = window.location.origin + "/api/diagram";
-    const DIAGRAM_ID = "classroom";
+    const classroom = document.getElementById("classroom");
 
-    function getData() {
-      const groups = {};
-      document.querySelectorAll(".group").forEach((group, gIndex) => {
-        const tables = group.querySelectorAll(".table");
-        groups[`group${gIndex+1}`] = Array.from(tables).map(table => {
-          const inputs = table.querySelectorAll("input");
-          return Array.from(inputs).map(inp => inp.value);
+    // Tạo sơ đồ lớp
+    for (let group = 1; group <= 4; group++) {
+      const groupDiv = document.createElement("div");
+      groupDiv.className = "group";
+
+      for (let table = 1; table <= 6; table++) {
+        const tableDiv = document.createElement("div");
+        tableDiv.className = "table";
+
+        const title = document.createElement("h3");
+        title.textContent = `Tổ ${group} - Bàn ${table}`;
+        tableDiv.appendChild(title);
+
+        const seatDiv = document.createElement("div");
+        seatDiv.className = "seat";
+
+        for (let seat = 1; seat <= 2; seat++) {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.placeholder = `HS ${seat}`;
+          input.dataset.group = group;
+          input.dataset.table = table;
+          input.dataset.seat = seat;
+
+          // Khi thay đổi -> lưu ngay ô đó
+          input.addEventListener("change", () => saveOne(input));
+
+          seatDiv.appendChild(input);
+        }
+
+        tableDiv.appendChild(seatDiv);
+        groupDiv.appendChild(tableDiv);
+      }
+
+      classroom.appendChild(groupDiv);
+    }
+
+    // Lưu một ô duy nhất
+    function saveOne(input) {
+      const payload = {
+        group: input.dataset.group,
+        table: input.dataset.table,
+        seat: input.dataset.seat,
+        name: input.value
+      };
+
+      fetch("/saveOne", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(msg => console.log("✅ Lưu xong:", msg))
+      .catch(err => console.error("❌ Lỗi khi lưu:", err));
+    }
+
+    // Lưu toàn bộ (nút Save All)
+    function saveAll() {
+      const inputs = document.querySelectorAll("input");
+      const data = [];
+      inputs.forEach(input => {
+        data.push({
+          group: input.dataset.group,
+          table: input.dataset.table,
+          seat: input.dataset.seat,
+          name: input.value
         });
       });
-      return groups;
-    }
 
-    function setData(data) {
-      Object.keys(data).forEach((g, gIndex) => {
-        const group = document.getElementById(`group${gIndex+1}`);
-        if (group) {
-          const tables = group.querySelectorAll(".table");
-          data[g].forEach((students, tIndex) => {
-            const inputs = tables[tIndex].querySelectorAll("input");
-            students.forEach((val, i) => {
-              if (inputs[i]) inputs[i].value = val;
-            });
-          });
-        }
-      });
-    }
-
-    async function saveClassroom() {
-      const classroom = getData();
-      await fetch(`${API_BASE}/${DIAGRAM_ID}`, {
-        method: "PUT",
+      fetch("/save", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ uml: classroom })
-      });
-      alert("✅ Saved!");
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(msg => alert("✅ Đã lưu tất cả"))
+      .catch(err => alert("❌ Lỗi khi lưu: " + err));
     }
 
-    async function loadClassroom() {
-      const res = await fetch(`${API_BASE}/${DIAGRAM_ID}`);
-      const data = await res.json();
-      if (data && data.uml) {
-        setData(data.uml);
-      } else {
-        alert("⚠ No data found!");
-      }
+    // Load dữ liệu từ DB
+    function loadData() {
+      fetch("/load")
+        .then(res => res.json())
+        .then(data => {
+          const inputs = document.querySelectorAll("input");
+          inputs.forEach(input => {
+            const found = data.find(item =>
+              item.group == input.dataset.group &&
+              item.table == input.dataset.table &&
+              item.seat == input.dataset.seat
+            );
+            if (found) input.value = found.name;
+          });
+        })
+        .catch(err => alert("❌ Lỗi khi tải: " + err));
     }
+
+    // Tự động load khi mở trang
+    loadData();
   </script>
 </body>
 </html>
