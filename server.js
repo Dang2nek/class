@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 🔗 Kết nối MongoDB Atlas
-mongoose.connect("mongodb+srv://class:class@class.i7mhwiv.mongodb.net/classroom", {
+mongoose.connect("mongodb+srv://class:class@class.i7mhwiv.mongodb.net/?retryWrites=true&w=majority&appName=class", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
