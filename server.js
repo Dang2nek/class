@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // 🔗 Kết nối MongoDB Atlas
 mongoose.connect(
-  "mongodb+srv://class:class@class.i7mhwiv.mongodb.net/classroom?retryWrites=true&w=majority",
+  "mongodb+srv://class:chatforclass@class.i7mhwiv.mongodb.net/classroom?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
