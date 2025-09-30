@@ -10,12 +10,12 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
-// 🔗 MongoDB Atlas URI (bạn đã gửi)
+// 🔗 MongoDB Atlas URI (link của bạn gửi)
 const uri = "mongodb+srv://class:class@class.i7mhwiv.mongodb.net/?retryWrites=true&w=majority&appName=class";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Kết nối Mongo Atlas
-async function run() {
+// Kết nối MongoDB
+async function connectDB() {
   try {
     await client.connect();
     console.log("✅ Connected to MongoDB Atlas");
@@ -23,9 +23,9 @@ async function run() {
     console.error("❌ MongoDB connection error:", err);
   }
 }
-run();
+connectDB();
 
-// ====================== SAVE ALL ======================
+// ================== SAVE ALL ==================
 app.post("/save", async (req, res) => {
   try {
     const db = client.db("classroom");
@@ -40,7 +40,7 @@ app.post("/save", async (req, res) => {
   }
 });
 
-// ====================== SAVE ONE ======================
+// ================== SAVE ONE ==================
 app.post("/saveOne", async (req, res) => {
   try {
     const db = client.db("classroom");
@@ -60,7 +60,7 @@ app.post("/saveOne", async (req, res) => {
   }
 });
 
-// ====================== LOAD ======================
+// ================== LOAD ==================
 app.get("/load", async (req, res) => {
   try {
     const db = client.db("classroom");
@@ -73,7 +73,7 @@ app.get("/load", async (req, res) => {
   }
 });
 
-// ====================== START SERVER ======================
+// ================== START SERVER ==================
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
