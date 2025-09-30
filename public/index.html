@@ -102,9 +102,7 @@
           input.dataset.table = table;
           input.dataset.seat = seat;
 
-          // Khi thay đổi -> lưu ngay ô đó
           input.addEventListener("change", () => saveOne(input));
-
           seatDiv.appendChild(input);
         }
 
@@ -115,7 +113,7 @@
       classroom.appendChild(groupDiv);
     }
 
-    // Lưu một ô duy nhất
+    // Lưu 1 ô
     function saveOne(input) {
       const payload = {
         group: input.dataset.group,
@@ -134,7 +132,7 @@
       .catch(err => console.error("❌ Lỗi khi lưu:", err));
     }
 
-    // Lưu toàn bộ (nút Save All)
+    // Lưu tất cả
     function saveAll() {
       const inputs = document.querySelectorAll("input");
       const data = [];
@@ -153,11 +151,11 @@
         body: JSON.stringify(data)
       })
       .then(res => res.json())
-      .then(msg => alert("✅ Đã lưu tất cả"))
+      .then(() => alert("✅ Đã lưu tất cả"))
       .catch(err => alert("❌ Lỗi khi lưu: " + err));
     }
 
-    // Load dữ liệu từ DB
+    // Load dữ liệu
     function loadData() {
       fetch("/load")
         .then(res => res.json())
@@ -175,7 +173,6 @@
         .catch(err => alert("❌ Lỗi khi tải: " + err));
     }
 
-    // Tự động load khi mở trang
     loadData();
   </script>
 </body>
